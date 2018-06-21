@@ -1,4 +1,4 @@
-package lesson2.Rectangle;
+package lesson2.rectangle;
 
 public class Rectangle {
     private int width;
@@ -27,7 +27,7 @@ public class Rectangle {
 
     @Override
     public String toString() {
-        return "Rectangle{" +
+        return "rectangle{" +
                 "width=" + width +
                 ", height=" + height +
                 '}';

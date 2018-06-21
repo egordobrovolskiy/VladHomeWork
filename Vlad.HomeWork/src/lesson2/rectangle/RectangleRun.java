@@ -1,4 +1,4 @@
-package lesson2.Rectangle;
+package lesson2.rectangle;
 
 public class RectangleRun {
     public static void main(String[] args) {

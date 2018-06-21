@@ -1,4 +1,4 @@
-package lesson2.Rectangle;
+package lesson2.rectangle;
 
 import java.util.ArrayList;
 import java.util.List;
