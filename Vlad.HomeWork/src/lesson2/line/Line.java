@@ -34,6 +34,7 @@ public class Line {
         return "Line{" +
                 "start=" + start +
                 ", end=" + end +
+                ", line length=" + getLineLength() +
                 '}';
     }
 }
