@@ -67,10 +67,6 @@ public class Book {
             typeOfBinding = builder.typeOfBinding;
         }
 
-    public String getBookName() {
-        return bookName;
-    }
-
     String getAuthor() {
         return author;
     }
@@ -81,18 +77,6 @@ public class Book {
 
     Year getDateOfPublication() {
         return dateOfPublication;
-    }
-
-    public Integer getPages() {
-        return pages;
-    }
-
-    public Long getPrice() {
-        return price;
-    }
-
-    public TypeOfBinding getTypeOfBinding() {
-        return typeOfBinding;
     }
 
     @Override

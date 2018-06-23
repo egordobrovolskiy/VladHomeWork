@@ -3,7 +3,7 @@ package lesson2.rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Rectangles {
+class Rectangles {
     private List<Rectangle> rectangles = new ArrayList<>();
 
     void addRectangle(Rectangle rectangle) {
