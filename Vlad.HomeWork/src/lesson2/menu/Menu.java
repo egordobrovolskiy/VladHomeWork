@@ -16,19 +16,7 @@ public class Menu {
     }
 
     Dish getCheapestDish() {
-        return dishes.stream().sorted((x1, x2) -> (int)(x1.getPrice() - x2.getPrice())).findFirst().get();
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public List<Dish> getDishes() {
-        return dishes;
-    }
-
-    public void setDishes(List<Dish> dishes) {
-        this.dishes = dishes;
+        return dishes.stream().min((x1, x2) -> (int) (x1.getPrice() - x2.getPrice())).get();
     }
 
     @Override

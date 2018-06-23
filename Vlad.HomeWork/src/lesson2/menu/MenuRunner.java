@@ -5,7 +5,7 @@ public class MenuRunner {
         Dish fish =new Dish("Fish", "Судак на гриле", 65);
         Dish stake = new Dish("Stake", "Стейк из мраморной телятины", 120);
         Dish iceCream = new Dish("Ice Cream", "Домашнее мороженое", 20);
-        Dish summer = new Dish("Sumer", "Блюдо из ягод", 34);
+        Dish summer = new Dish("Summer", "Блюдо из ягод", 34);
 
         Menu dinner = new Menu("Dinner");
         dinner.addDish(fish);

@@ -34,10 +34,6 @@ public class Lines {
 //        return result;
     }
 
-    public List<Line> getLines() {
-        return lines;
-    }
-
     @Override
     public String toString() {
         return "Lines{" +

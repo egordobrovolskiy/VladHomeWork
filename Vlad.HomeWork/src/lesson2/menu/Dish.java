@@ -5,26 +5,14 @@ public class Dish {
     private final String description;
     private long price;
 
-    public Dish(String name, String description, long price) {
+    Dish(String name, String description, long price) {
         this.name = name;
         this.description = description;
         this.price = price;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public long getPrice() {
+    long getPrice() {
         return price;
-    }
-
-    public void setPrice(long price) {
-        this.price = price;
     }
 
     @Override

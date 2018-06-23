@@ -13,16 +13,8 @@ public class Point {
         return x;
     }
 
-    public void setX(double x) {
-        this.x = x;
-    }
-
     double getY() {
         return y;
-    }
-
-    public void setY(double y) {
-        this.y = y;
     }
 
     @Override

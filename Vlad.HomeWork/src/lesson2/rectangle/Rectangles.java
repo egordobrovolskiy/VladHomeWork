@@ -24,7 +24,4 @@ public class Rectangles {
         return rectangles.stream().mapToInt(Rectangle::getSquare).sum();
     }
 
-    public List<Rectangle> getRectangles() {
-        return rectangles;
-    }
 }
