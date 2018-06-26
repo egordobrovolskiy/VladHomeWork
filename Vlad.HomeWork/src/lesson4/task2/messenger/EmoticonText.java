@@ -42,6 +42,7 @@ public class EmoticonText  implements Text {
 
     static void saveProperties() {
         String path = new File("").getAbsolutePath() + DIR_PROPERTIES;
+        new File(path).mkdirs();
         File file = new File(path, EMOTIONS_PROPERTIES);
         try (OutputStream writer = new FileOutputStream(file)) {
             prop.store(writer, null);

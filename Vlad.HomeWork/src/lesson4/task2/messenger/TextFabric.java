@@ -48,7 +48,7 @@ class TextFabric {
         switch (text.toLowerCase()) {
             case LOG: {
                 ChatRun.dialog.printLog();
-                return new PlainText("You have LogFile at :" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+                return new PlainText("You have LogFile at : " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
             }
             case ADD_EMOTION: {
                 System.out.println("Введите название смайла");
