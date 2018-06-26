@@ -5,20 +5,23 @@ import java.util.Properties;
 import java.util.Set;
 
 public class EmoticonText  implements Text {
-//    private static Map<String, String> mapEmoticon = new HashMap<>();
-//    static {
-//        mapEmoticon.put("winking-face", "\uD83D\uDE09");
-//        mapEmoticon.put("ghost", "\uD83D\uDC7B");
-//    }
 
     private String emoticon;
 
     private static Properties prop = new Properties();
+    private static final String EMOTIONS_PROPERTIES = "emotions.properties";
+    private static final String EMOTICON_RESERVE = "lesson4/task2/messenger/properties/emotions_save.properties";
+
     static {
-        try (InputStream inputStream = EmoticonText.class.getClassLoader().getResourceAsStream("lesson4/task2/messenger/properties/emotions.properties")) {
+        try (InputStream inputStream = new FileInputStream(EMOTIONS_PROPERTIES)) {
             prop.load(inputStream);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println(e + " Резервания копия");
+            try (InputStream streamReserv = EmoticonText.class.getClassLoader().getResourceAsStream(EMOTICON_RESERVE)) {
+                prop.load(streamReserv);
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
         }
     }
 
@@ -30,11 +33,18 @@ public class EmoticonText  implements Text {
     public String print() {
         return prop.getProperty(emoticon);
     }
-    public void addEmoticon(String name, String picture) {
+    static void addEmoticon(String name, String picture) {
         prop.put(name, picture);
     }
     static Set<String> getEmotion(){
         return prop.stringPropertyNames();
     }
+    static void saveProperties() {
+        try (OutputStream writer = new FileOutputStream(EMOTIONS_PROPERTIES)) {
+            prop.store(writer, null);
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

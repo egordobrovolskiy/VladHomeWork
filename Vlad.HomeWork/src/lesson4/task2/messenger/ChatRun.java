@@ -12,17 +12,17 @@ public class ChatRun {
 
     public static void main(String[] args) {
         try {
+            System.err.println("для выхода введите 'exit'.");
             while (exitFlag) {
                 dialog.addMessageAndPrint(new Message(getNick(), getText()));
             }
         } finally {
-            System.out.println("Buy!!! Buy!!!");
+            System.err.println("Buy!!! Buy!!!");
             scanner.close();
+            EmoticonText.saveProperties();
+            PictureText.saveProperties();
         }
-//        dialog.addMessageAndPrint(new Message("Egor", new EmoticonText("ghost")));
-//        dialog.addMessageAndPrint(new Message("Vlad", new PlainText("I'm fine")));
-//        dialog.addMessageAndPrint(new Message("Egor", new EmoticonText("winking-face")));
-//        dialog.addMessageAndPrint(new Message("Vlad", new PictureText("like")));
+
     }
 
     private static String getNick() {
@@ -32,10 +32,9 @@ public class ChatRun {
         return nick;
     }
 
-    //при вводе log можно вывести всю историю
     //проверка не чувствительна к регистру текста
     private static Text getText() {
-        System.out.println("Введите 'emotion', 'picture' или послание...");
+        System.out.println("Введите 'emotion', 'picture' или послание... Для администрированния 'admin'.");
         String text = scanner.nextLine();
         exit(text);
         switch (text.toLowerCase()) {
@@ -51,9 +50,8 @@ public class ChatRun {
                 exit(picture);
                 return new PictureText(picture.toLowerCase());
             }
-            case ("log"): {
-                dialog.printLog();
-                return new PlainText("You have LogFile at :" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+            case ("admin"): {
+                return adminMenu();
             }
             default:{
                 return  new PlainText(text);
@@ -61,7 +59,41 @@ public class ChatRun {
         }
     }
 
-    //при каждом обращении к консоли - преверка на выход из чата
+    private static Text adminMenu() {
+        System.out.println("'log' - для просмотра лога; 'add emotion' - добавить смайлик; 'add picture' - добавить текстовую картинку.");
+        String text = scanner.nextLine();
+        exit(text);
+        switch (text.toLowerCase()) {
+            case ("log"): {
+                dialog.printLog();
+                return new PlainText("You have LogFile at :" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+            }
+            case ("add emotion"): {
+                System.out.println("Введите название смайла");
+                String nameSmile = scanner.nextLine();
+                exit(nameSmile);
+                System.out.println("Введите код смайла в формате \\u2620");
+                String codeSmile = scanner.nextLine();
+                exit(codeSmile);
+                EmoticonText.addEmoticon(nameSmile, codeSmile);
+                return new PlainText("Добавлен смайлик " + nameSmile + " -> " + codeSmile);
+            }
+            case ("add picture"): {
+                System.out.println("Введите название картинки");
+                String namePicture = scanner.nextLine();
+                exit(namePicture);
+                System.out.println("Введите картинку");
+                String codePicture = scanner.nextLine();
+                exit(codePicture);
+                PictureText.addPicture(namePicture, codePicture);
+                return new PlainText("Добавлен смайлик " + namePicture + " -> \n" + codePicture);
+            }
+            default:
+                return new PlainText("Администрирование не произведенно.... -> " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+        }
+    }
+
+    //при каждом обращении к консоли - проверка на выход из чата
     private static void exit(String text) {
         if ("exit".equals(text.toLowerCase())) exitFlag = false;
     }
