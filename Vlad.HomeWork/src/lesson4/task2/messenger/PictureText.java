@@ -2,6 +2,7 @@ package lesson4.task2.messenger;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class PictureText implements Text {
 
@@ -64,6 +65,9 @@ public class PictureText implements Text {
     }
     public void addPicture(String name, String picture) {
         mapPicture.put(name, picture);
+    }
+    public  static Set<String> getPictures() {
+        return mapPicture.keySet();
     }
 
 }

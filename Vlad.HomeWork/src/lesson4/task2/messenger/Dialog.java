@@ -4,16 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Dialog {
-    private List<Message> messages = new ArrayList<>();
+    private List<Message> log = new ArrayList<>();
 
-    private void rePrint() {
-        for (Message message : messages) {
+    void printLog() {
+        for (Message message : log) {
             System.out.println(message);
         }
+        System.out.println("===========================================");
+
     }
     void addMessageAndPrint(Message message) {
-        messages.add(message);
-        rePrint();
-        System.out.println("===========================================");
+        log.add(message);
+        System.out.println(message);
     }
 }
