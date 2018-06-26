@@ -17,8 +17,8 @@ public class EmoticonText  implements Text {
             prop.load(inputStream);
         } catch (IOException e) {
             System.err.println(e + " Резервания копия");
-            try (InputStream streamReserv = EmoticonText.class.getClassLoader().getResourceAsStream(EMOTICON_RESERVE)) {
-                prop.load(streamReserv);
+            try (InputStream streamReserve = EmoticonText.class.getClassLoader().getResourceAsStream(EMOTICON_RESERVE)) {
+                prop.load(streamReserve);
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
@@ -33,12 +33,15 @@ public class EmoticonText  implements Text {
     public String print() {
         return prop.getProperty(emoticon);
     }
+
     static void addEmoticon(String name, String picture) {
         prop.put(name, picture);
     }
+
     static Set<String> getEmotion(){
         return prop.stringPropertyNames();
     }
+
     static void saveProperties() {
         try (OutputStream writer = new FileOutputStream(EMOTIONS_PROPERTIES)) {
             prop.store(writer, null);
