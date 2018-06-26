@@ -34,6 +34,7 @@ public class EmoticonText  implements Text {
         return prop.getProperty(emoticon);
     }
 
+    //избавиться от второго / во время добавления (не решено)
     static void addEmoticon(String name, String picture) {
         prop.put(name, picture);
     }
@@ -42,6 +43,7 @@ public class EmoticonText  implements Text {
         return prop.stringPropertyNames();
     }
 
+    // сохранять в указанную папку (не решено)
     static void saveProperties() {
         try (OutputStream writer = new FileOutputStream(EMOTIONS_PROPERTIES)) {
             prop.store(writer, null);

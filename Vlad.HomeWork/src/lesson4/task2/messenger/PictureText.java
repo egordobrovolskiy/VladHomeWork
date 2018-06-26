@@ -42,6 +42,7 @@ private static Properties prop = new Properties();
         return prop.stringPropertyNames();
     }
 
+    // сохранять в указанную папку (не решено)
     static void saveProperties() {
         try (OutputStream writer = new FileOutputStream(PICTURE_PROPERTIES)) {
             prop.store(writer, null);

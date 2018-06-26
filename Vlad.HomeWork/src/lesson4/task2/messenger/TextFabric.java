@@ -5,6 +5,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 class TextFabric {
+    public static final String EMOTION = "emotion";
+    public static final String PICTURE = "picture";
+    public static final String ADMIN = "admin";
+    public static final String LOG = "log";
+    public static final String ADD_EMOTION = "add emotion";
+    public static final String ADD_PICTURE = "add picture";
     private static Scanner scanner = new Scanner(System.in);
 
     //проверка не чувствительна к регистру текста
@@ -14,19 +20,19 @@ class TextFabric {
         String text = scanner.nextLine();
         ChatRun.exit(text);
         switch (text.toLowerCase()) {
-            case ("emotion"): {
+            case EMOTION: {
                 System.out.println("emotions: " + EmoticonText.getEmotion());
                 String emotion = scanner.nextLine();
                 ChatRun.exit(emotion);
                 return new EmoticonText(emotion.toLowerCase());
             }
-            case ("picture"): {
+            case PICTURE: {
                 System.out.println("pictures: " + PictureText.getPictures());
                 String picture = scanner.nextLine();
                 ChatRun.exit(picture);
                 return new PictureText(picture.toLowerCase());
             }
-            case ("admin"): {
+            case ADMIN: {
                 return adminMenu();
             }
             default: {
@@ -40,11 +46,11 @@ class TextFabric {
         String text = scanner.nextLine();
         ChatRun.exit(text);
         switch (text.toLowerCase()) {
-            case ("log"): {
+            case LOG: {
                 ChatRun.dialog.printLog();
                 return new PlainText("You have LogFile at :" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
             }
-            case ("add emotion"): {
+            case ADD_EMOTION: {
                 System.out.println("Введите название смайла");
                 String nameSmile = scanner.nextLine();
                 ChatRun.exit(nameSmile);
@@ -54,7 +60,7 @@ class TextFabric {
                 EmoticonText.addEmoticon(nameSmile, codeSmile);
                 return new PlainText("Добавлен смайлик " + nameSmile + " -> " + codeSmile);
             }
-            case ("add picture"): {
+            case ADD_PICTURE: {
                 System.out.println("Введите название картинки");
                 String namePicture = scanner.nextLine();
                 ChatRun.exit(namePicture);
