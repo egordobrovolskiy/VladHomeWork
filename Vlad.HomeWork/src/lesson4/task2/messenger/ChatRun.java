@@ -9,12 +9,12 @@ public class ChatRun {
 
     public static void main(String[] args) {
         try {
-            System.err.println("для выхода введите 'exit'.");
+            System.out.println("для выхода введите 'exit'.");
             while (exitFlag) {
                 dialog.addMessageAndPrint(new Message(getNick(), TextFabric.getText()));
             }
         } finally {
-            System.err.println("Buy!!! Buy!!!");
+            System.out.println("Buy!!! Buy!!!");
             EmoticonText.saveProperties();
             PictureText.saveProperties();
         }

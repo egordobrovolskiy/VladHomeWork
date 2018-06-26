@@ -10,18 +10,15 @@ public class EmoticonText  implements Text {
 
     private static Properties prop = new Properties();
     private static final String EMOTIONS_PROPERTIES = "emotions.properties";
-    private static final String EMOTICON_RESERVE = "lesson4/task2/messenger/properties/emotions_save.properties";
+    private static final String DIR_PROPERTIES = "\\Vlad.HomeWork\\src\\lesson4\\task2\\messenger\\properties";
+    private static final String EMOTICON_RESERVE = "lesson4/task2/messenger/properties/emotions.properties";
+
 
     static {
-        try (InputStream inputStream = new FileInputStream(EMOTIONS_PROPERTIES)) {
-            prop.load(inputStream);
+        try (InputStream streamReserve = EmoticonText.class.getClassLoader().getResourceAsStream(EMOTICON_RESERVE)) {
+            prop.load(streamReserve);
         } catch (IOException e) {
-            System.err.println(e + " Резервания копия");
-            try (InputStream streamReserve = EmoticonText.class.getClassLoader().getResourceAsStream(EMOTICON_RESERVE)) {
-                prop.load(streamReserve);
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
+          e.printStackTrace();
         }
     }
 
@@ -43,9 +40,10 @@ public class EmoticonText  implements Text {
         return prop.stringPropertyNames();
     }
 
-    // сохранять в указанную папку (не решено)
     static void saveProperties() {
-        try (OutputStream writer = new FileOutputStream(EMOTIONS_PROPERTIES)) {
+        String path = new File("").getAbsolutePath() + DIR_PROPERTIES;
+        File file = new File(path, EMOTIONS_PROPERTIES);
+        try (OutputStream writer = new FileOutputStream(file)) {
             prop.store(writer, null);
 
         } catch (IOException e) {

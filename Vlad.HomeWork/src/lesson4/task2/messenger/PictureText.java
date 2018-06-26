@@ -9,18 +9,14 @@ public class PictureText implements Text {
 private static Properties prop = new Properties();
 
     private static final String PICTURE_PROPERTIES = "picture.properties";
-    private static final String PICTURE_RESERVE = "lesson4/task2/messenger/properties/picture_save.properties";
+    private static final String DIR_PROPERTIES = "\\Vlad.HomeWork\\src\\lesson4\\task2\\messenger\\properties";
+    private static final String PICTURE_RESERVE = "lesson4/task2/messenger/properties/picture.properties";
 
     static {
-        try (InputStream inputStream = new FileInputStream(PICTURE_PROPERTIES)) {
-            prop.load(inputStream);
+        try (InputStream streamReserve = PictureText.class.getClassLoader().getResourceAsStream(PICTURE_RESERVE)) {
+            prop.load(streamReserve);
         } catch (IOException e) {
-            System.err.println(e + " Резервания копия");
-            try (InputStream streamReserve = PictureText.class.getClassLoader().getResourceAsStream(PICTURE_RESERVE)) {
-                prop.load(streamReserve);
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
+            e.printStackTrace();
         }
     }
     private String textPicture;
@@ -42,9 +38,10 @@ private static Properties prop = new Properties();
         return prop.stringPropertyNames();
     }
 
-    // сохранять в указанную папку (не решено)
     static void saveProperties() {
-        try (OutputStream writer = new FileOutputStream(PICTURE_PROPERTIES)) {
+        String path = new File("").getAbsolutePath() + DIR_PROPERTIES;
+        File file = new File(path, PICTURE_PROPERTIES);
+        try (OutputStream writer = new FileOutputStream(file)) {
             prop.store(writer, null);
 
         } catch (IOException e) {
