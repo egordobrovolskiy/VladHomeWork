@@ -6,11 +6,10 @@ import java.util.Set;
 
 public class PictureText implements Text {
 
-private static Properties prop = new Properties();
-
     private static final String PICTURE_PROPERTIES = "picture.properties";
     private static final String DIR_PROPERTIES = "\\Vlad.HomeWork\\src\\lesson4\\task2\\messenger\\properties";
     private static final String PICTURE_RESERVE = "lesson4/task2/messenger/properties/picture.properties";
+    private static Properties prop = new Properties();
 
     static {
         try (InputStream streamReserve = PictureText.class.getClassLoader().getResourceAsStream(PICTURE_RESERVE)) {
@@ -19,15 +18,11 @@ private static Properties prop = new Properties();
             e.printStackTrace();
         }
     }
+
     private String textPicture;
 
     PictureText(String textPicture) {
         this.textPicture = textPicture;
-    }
-
-    @Override
-    public String print() {
-        return prop.getProperty(textPicture);
     }
 
     static void addPicture(String name, String picture) {
@@ -48,6 +43,11 @@ private static Properties prop = new Properties();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public String print() {
+        return prop.getProperty(textPicture);
     }
 
 }

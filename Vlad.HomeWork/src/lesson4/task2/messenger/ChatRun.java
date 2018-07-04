@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class ChatRun {
 
-    private static boolean exitFlag = true;
     static Dialog dialog = new Dialog();
+    private static boolean exitFlag = true;
 
     public static void main(String[] args) {
         try {

@@ -5,12 +5,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 class TextFabric {
-    public static final String EMOTION = "emotion";
-    public static final String PICTURE = "picture";
-    public static final String ADMIN = "admin";
-    public static final String LOG = "log";
-    public static final String ADD_EMOTION = "add emotion";
-    public static final String ADD_PICTURE = "add picture";
+    private static final String EMOTION = "emotion";
+    private static final String PICTURE = "picture";
+    private static final String ADMIN = "admin";
+    private static final String LOG = "log";
+    private static final String ADD_EMOTION = "add emotion";
+    private static final String ADD_PICTURE = "add picture";
     private static Scanner scanner = new Scanner(System.in);
 
     //проверка не чувствительна к регистру текста

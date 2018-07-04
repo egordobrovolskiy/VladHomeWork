@@ -13,6 +13,7 @@ class Dialog {
         System.out.println("===========================================");
 
     }
+
     void addMessageAndPrint(Message message) {
         log.add(message);
         System.out.println(message);

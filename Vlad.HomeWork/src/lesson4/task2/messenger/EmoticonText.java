@@ -4,31 +4,25 @@ import java.io.*;
 import java.util.Properties;
 import java.util.Set;
 
-public class EmoticonText  implements Text {
+public class EmoticonText implements Text {
 
-    private String emoticon;
-
-    private static Properties prop = new Properties();
     private static final String EMOTIONS_PROPERTIES = "emotions.properties";
     private static final String DIR_PROPERTIES = "\\Vlad.HomeWork\\src\\lesson4\\task2\\messenger\\properties";
     private static final String EMOTICON_RESERVE = "lesson4/task2/messenger/properties/emotions.properties";
-
+    private static Properties prop = new Properties();
 
     static {
         try (InputStream streamReserve = EmoticonText.class.getClassLoader().getResourceAsStream(EMOTICON_RESERVE)) {
             prop.load(streamReserve);
         } catch (IOException e) {
-          e.printStackTrace();
+            e.printStackTrace();
         }
     }
 
+    private String emoticon;
+
     EmoticonText(String emoticon) {
         this.emoticon = emoticon;
-    }
-
-    @Override
-    public String print() {
-        return prop.getProperty(emoticon);
     }
 
     //избавиться от второго / во время добавления (не решено)
@@ -36,7 +30,7 @@ public class EmoticonText  implements Text {
         prop.put(name, picture);
     }
 
-    static Set<String> getEmotion(){
+    static Set<String> getEmotion() {
         return prop.stringPropertyNames();
     }
 
@@ -50,5 +44,10 @@ public class EmoticonText  implements Text {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public String print() {
+        return prop.getProperty(emoticon);
     }
 }
