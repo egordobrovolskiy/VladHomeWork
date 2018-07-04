@@ -14,9 +14,9 @@ public class File extends NamedFSItem {
 
     @Override
     public String toString() {
-        return "File{" +
+        return "File {" +
                 "name = " + super.getName() +
-                "size=" + size +
-                "} ";
+                " size = " + size +
+                " } ";
     }
 }

@@ -38,11 +38,9 @@ public class Directory extends NamedFSItem {
 
     @Override
     public String toString() {
-        return "Directory{" +
-                "\n<" + super.getName() + "> " +
+        return "<" + super.getName() + "> " +
                 "items = " + items +
                 "</" + super.getName() + ">\n " +
-                "   }" +
-                "\n    ================================\n";
+                "    ================================\n";
     }
 }
