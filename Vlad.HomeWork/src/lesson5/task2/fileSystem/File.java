@@ -8,6 +8,7 @@ public class File extends NamedFSItem {
         this.size = size;
     }
 
+    @Override
     public int getSize() {
         return size;
     }

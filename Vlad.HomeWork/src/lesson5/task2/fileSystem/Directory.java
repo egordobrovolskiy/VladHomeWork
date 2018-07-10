@@ -19,7 +19,7 @@ public class Directory extends NamedFSItem {
 
     private void loopingValidator(FSItem item) {
         if (item instanceof Directory) {
-            if (((Directory) item).getItems().contains(this)) throw new IllegalArgumentException();
+            if (((Directory) item).getItems().contains(this) || item.equals(this)) throw new IllegalArgumentException();
         }
     }
 

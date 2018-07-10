@@ -21,15 +21,13 @@ public class RunFileSystem {
     private static void tryCyclicDirectory() {
         Directory d1 = new Directory("d1");
         Directory d2 = new Directory("d2");
+        Directory d3 = d1;
+
 
         d2.add(d1);
         d1.add(d2);
-    }
+//        d1.add(d3);
 
-    private static void createSymlink() {
-        File file = new File("hello.txt", 10);
-        Symlink symlink = new Symlink("my-doc.txt", file);
-        System.out.println(symlink.getSymlinkName());
     }
 
     private static void addFluentItems() {
@@ -44,5 +42,11 @@ public class RunFileSystem {
                 .add(new File("unknown-music.mp3", 500));
 
         System.out.println(dir);
+    }
+
+    private static void createSymlink() {
+        File file = new File("hello.txt", 10);
+        Symlink symlink = new Symlink("my-doc.txt", file);
+        System.out.println(symlink.getSymlinkName());
     }
 }

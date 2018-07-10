@@ -1,7 +1,7 @@
 package lesson5.task2.fileSystem;
 
 public class Symlink {
-    private final int size = 1;
+    private static final int SIZE = 1;
     private String symlinkName;
     private FSItem item;
 
@@ -16,14 +16,14 @@ public class Symlink {
     }
 
     public int getSize() {
-        return size;
+        return SIZE;
     }
 
     @Override
     public String toString() {
         return "Symlink{" +
                 "symlinkName='" + symlinkName + '\'' +
-                ", size=" + size +
+                ", SIZE=" + SIZE +
                 ", item=" + item +
                 '}';
     }
