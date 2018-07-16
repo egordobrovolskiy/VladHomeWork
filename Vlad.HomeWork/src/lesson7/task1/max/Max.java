@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Max {
     static <T> T max(List<T> list, Comparator<T> comparator) {
-        if (list == null || list.isEmpty()) throw new NullPointerException("Лист пустой");
+        if (list == null || list.isEmpty()) throw new IllegalArgumentException("Лист пустой");
         T result = list.get(0);
         for (T type : list) {
             if (comparator.compare(result, type) < 0){
