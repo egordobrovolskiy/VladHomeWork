@@ -8,6 +8,15 @@ import java.time.LocalDateTime;
 public class TaskRun {
     public static void main(String[] args) {
 
+        Tasks tasks = new Tasks();
+
+        tasksComplit(tasks);
+
+        printTest(tasks);
+    }
+
+    private static void tasksComplit(Tasks tasks) {
+
         Task task1 = new Task(123, "IntelliJ", "IDE", LocalDateTime.of(2018, 3, 30, 14, 15), Priority.NORMAL);
 
         Task task2 = new Task(143, "Adobe Reader", "The most popular and free software to support PDF files", LocalDateTime.of(2018, 3, 30, 18, 15), Priority.MAJOR);
@@ -18,13 +27,14 @@ public class TaskRun {
 
         Task task5 = new Task(434, "Flash Player", "Multimedia player", LocalDateTime.of(2018, 8, 30, 17, 34), Priority.MAJOR);
 
-        Tasks tasks = new Tasks();
         tasks.add(task1);
         tasks.add(task2);
         tasks.add(task3);
         tasks.add(task4);
         tasks.add(task5);
+    }
 
+    private static void printTest(Tasks tasks) {
         System.out.println("Sorting by name");
         tasks.sort(TaskComparators.byName());
         System.out.println(tasks);
@@ -40,7 +50,7 @@ public class TaskRun {
         System.out.println("Name contains substring \"ntel\"\n" +
                 tasks.filter(TaskPredicates.nameContains("ntel")));
 
-        System.out.println("Has expired deadline(now time: "+LocalDateTime.now() + ")\n" +
+        System.out.println("Has expired deadline(now time: " + LocalDateTime.now() + ")\n" +
                 tasks.filter(TaskPredicates.hasExpiredDeadline()));
 
         System.out.println("Has priority NORMAL\n" +
