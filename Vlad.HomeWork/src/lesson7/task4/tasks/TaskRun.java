@@ -10,12 +10,12 @@ public class TaskRun {
 
         Tasks tasks = new Tasks();
 
-        tasksComplit(tasks);
+        tasksComplete(tasks);
 
         printTest(tasks);
     }
 
-    private static void tasksComplit(Tasks tasks) {
+    private static void tasksComplete(Tasks tasks) {
 
         Task task1 = new Task(123, "IntelliJ", "IDE", LocalDateTime.of(2018, 3, 30, 14, 15), Priority.NORMAL);
 
