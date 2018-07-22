@@ -12,18 +12,24 @@ public class Tasks {
         tasks.add(task);
     }
 
+    public void addAll(List<Task> list) {
+        tasks.addAll(list);
+    }
+
     public void sort(Comparator<Task> comparator) {
         tasks.sort(comparator);
     }
 
     public Tasks filter(Predicate<Task> predicate) {
+        List<Task> copyTasks = getTasks();
+        List<Task> filterList = Filter.filter(copyTasks, predicate);
         Tasks result = new Tasks();
-        for (Task task : tasks) {
-            if (predicate.test(task)) {
-                result.add(task);
-            }
-        }
+        result.addAll(filterList);
         return result;
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
     }
 
     @Override
