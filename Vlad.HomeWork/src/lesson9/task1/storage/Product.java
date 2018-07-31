@@ -1,5 +1,12 @@
 package lesson9.task1.storage;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@ToString
 public class Product implements Entity<Long> {
     private final long id;
     private String name;
@@ -16,39 +23,5 @@ public class Product implements Entity<Long> {
     @Override
     public Long getId() {
         return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public long getPrise() {
-        return prise;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setPrise(long prise) {
-        this.prise = prise;
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", prise=" + prise +
-                '}';
     }
 }

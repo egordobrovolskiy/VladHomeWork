@@ -1,6 +1,7 @@
 package lesson9.task1.storage;
 
-import com.sun.istack.internal.NotNull;
+
+import lombok.NonNull;
 
 import java.util.Optional;
 
@@ -11,7 +12,7 @@ import java.util.Optional;
  */
 public interface Storage<T extends Entity<ID>, ID> {
 
-    Optional<T> findById(@NotNull ID id);
-    void save(@NotNull T entity);
-    void deleteById(@NotNull ID id);
+    Optional<T> findById(@NonNull ID id);
+    void save(@NonNull T entity);
+    void deleteById(@NonNull ID id);
 }
